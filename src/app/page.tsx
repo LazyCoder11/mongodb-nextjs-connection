@@ -41,20 +41,20 @@ export default function Home() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    try {
-      await axios.delete(`/api/users/${id}`);
-      fetchUsers(); // Refresh user list
-    } catch (error) {
-      console.error("Error deleting user:", error);
-    }
-  };
+  // const handleDelete = async (id: string) => {
+  //   try {
+  //     await axios.delete(`/api/users/${id}`);
+  //     fetchUsers(); // Refresh user list
+  //   } catch (error) {
+  //     console.error("Error deleting user:", error);
+  //   }
+  // };
 
-  const confirmDelete = (id: string) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
-      handleDelete(id);
-    }
-  };
+  // const confirmDelete = (id: string) => {
+  //   if (window.confirm("Are you sure you want to delete this user?")) {
+  //     handleDelete(id);
+  //   }
+  // };
 
   return (
     <section className="min-h-screen space-y-5 pt-10">
@@ -109,12 +109,12 @@ export default function Home() {
                 className="border-b flex justify-between border-gray-600 pb-2"
               >
                 <strong>{user.name || "No Name"}</strong> {user.email}
-                <button
+                {/* <button
                   onClick={() => confirmDelete(user._id)}
                   className="text-red-400 hover:underline"
                 >
                   Delete
-                </button>
+                </button> */}
               </li>
             ))}
           </ul>
