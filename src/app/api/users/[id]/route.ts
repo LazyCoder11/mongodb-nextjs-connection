@@ -2,14 +2,20 @@ import { NextRequest, NextResponse } from "next/server";
 import connectionToDatabase from "../../../../../lib/mongoose";
 import User from "../../../../../models/user";
 
+interface Params {
+  params: { id: string };
+}
+
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: Params
 ): Promise<NextResponse> {
   try {
     await connectionToDatabase();
 
-    const deletedUser = await User.findByIdAndDelete(params.id);
+    const { id } = context.params;
+
+    const deletedUser = await User.findByIdAndDelete(id);
     if (!deletedUser) {
       return NextResponse.json({ message: "User not found" }, { status: 404 });
     }

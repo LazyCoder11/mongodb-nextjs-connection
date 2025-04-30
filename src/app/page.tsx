@@ -50,6 +50,12 @@ export default function Home() {
     }
   };
 
+  const confirmDelete = (id: string) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      handleDelete(id);
+    }
+  };
+
   return (
     <section className="min-h-screen space-y-5 pt-10">
       <div className="max-w-3xl mx-auto p-4 bg-neutral-800 rounded-2xl text-white">
@@ -104,7 +110,7 @@ export default function Home() {
               >
                 <strong>{user.name || "No Name"}</strong> {user.email}
                 <button
-                  onClick={() => handleDelete(user._id)}
+                  onClick={() => confirmDelete(user._id)}
                   className="text-red-400 hover:underline"
                 >
                   Delete
